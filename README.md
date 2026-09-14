@@ -2,6 +2,9 @@
 
 *A Pixi workspace for building publication-ready audio files of «Sierra Arn — Composizioni, Op. 1» from MuseScore sources.*
 
+> **Note:**  
+> If you only need the finished FLAC audio and do not want to set up this workspace locally, download them from the [FLAC release](https://github.com/Sierra-Arn/audio-forge-opus-one/releases/tag/v2026.09.15). The MuseScore sources (`.mscz`) live in [score-forge-opus-one](https://github.com/Sierra-Arn/score-forge-opus-one).
+
 ## Project Structure at a Glance
 
 ```
