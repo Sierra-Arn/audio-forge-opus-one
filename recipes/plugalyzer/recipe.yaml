@@ -1,0 +1,50 @@
+# Copyright (c) 2026 Ilya Snegov (aka Sierra Arn)
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+#     http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# recipes/plugalyzer/recipe.yaml
+
+package:
+    name: plugalyzer
+    version: 0.5.0
+
+# ==================================================================================================
+
+source:
+    url: https://github.com/CrushedPixel/Plugalyzer/releases/download/v0.5.0/Plugalyzer_Linux.zip
+    sha256: 8d45bde621a424df54d341f880e22534196a4cae8a51f66ed256bff52e2d1aae
+
+# ==================================================================================================
+
+build:
+    number: 1
+    dynamic_linking:
+        # Prebuilt upstream binary — do not rewrite RPATH with patchelf.
+        binary_relocation: false
+    script: |
+        set -euxo pipefail
+        mkdir -p "${PREFIX}/bin"
+        install -m 755 Plugalyzer "${PREFIX}/bin/plugalyzer"
+
+# ==================================================================================================
+
+about:
+    homepage: https://github.com/CrushedPixel/Plugalyzer
+    repository: https://github.com/CrushedPixel/Plugalyzer
+    summary: Command-line VST3, AU and LADSPA plugin host for easier debugging of audio plugins
+    license: GPL-3.0-only
+    description: | 
+        Packaged from upstream release v0.5.0 
+        (commit d3a49fe9e5c206db398db4b131702a8327fbb02c).
+
+# ==================================================================================================

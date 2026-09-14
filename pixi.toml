@@ -1,0 +1,122 @@
+# ==================================================================================================
+
+[workspace]
+authors = ["Sierra-Arn <unweariedheart@gmail.com>"]
+name = "audio-forge-opus-one"
+version = "0.1.0"
+license = "Apache-2.0 AND CC-BY-4.0"
+repository = "https://github.com/Sierra-Arn/audio-forge-opus-one"
+
+channels = ["https://prefix.dev/conda-forge"]
+platforms = ["linux-64"]
+preview = ["pixi-build"]
+requires-pixi = ">=0.78.0"
+
+# ==================================================================================================
+
+[dependencies]
+
+scripts = { path = "./recipes/scripts" }
+musescore = { path = "./recipes/musescore" }
+
+# ==================================================================================================
+
+[tasks]
+fetch-mscz-scores = "fetch-mscz-scores"
+
+# --------------------------------------------------------------------------------------------------
+
+reverb-no-1 = "reverb Op-1_No-1_Believe 0.2"
+measure-reverbed-no-1 = "measure-loudness composizioni/Op-1_No-1_Believe/reverbed.flac"
+normalize-loudness-no-1 = "normalize-loudness Op-1_No-1_Believe --gain=5.90"
+measure-normalized-no-1 = "measure-loudness composizioni/Op-1_No-1_Believe/normalized.flac"
+release-no-1 = "write-flac-metadata Op-1_No-1_Believe \"No. 1: Believe\""
+
+# --------------------------------------------------------------------------------------------------
+
+reverb-no-2 = "reverb Op-1_No-2_Silence 0.7"
+measure-reverbed-no-2 = "measure-loudness composizioni/Op-1_No-2_Silence/reverbed.flac"
+normalize-loudness-no-2 = "normalize-loudness Op-1_No-2_Silence --gain=12.80"
+measure-normalized-no-2 = "measure-loudness composizioni/Op-1_No-2_Silence/normalized.flac"
+release-no-2 = "write-flac-metadata Op-1_No-2_Silence \"No. 2: Silence\""
+
+# --------------------------------------------------------------------------------------------------
+
+reverb-no-3 = "reverb Op-1_No-3_Abyss --send-piano 0.2 --send-harp 0.5 --send-soprano 0.3"
+measure-reverbed-no-3 = "measure-loudness composizioni/Op-1_No-3_Abyss/reverbed.flac"
+normalize-loudness-no-3 = "normalize-loudness Op-1_No-3_Abyss --gain=7.10"
+measure-normalized-no-3 = "measure-loudness composizioni/Op-1_No-3_Abyss/normalized.flac"
+release-no-3 = "write-flac-metadata Op-1_No-3_Abyss \"No. 3: Abyss\""
+
+# --------------------------------------------------------------------------------------------------
+
+reverb-no-4 = "reverb Op-1_No-4_Through_Pain 0.2"
+measure-reverbed-no-4 = "measure-loudness composizioni/Op-1_No-4_Through_Pain/reverbed.flac"
+normalize-loudness-no-4 = "normalize-loudness Op-1_No-4_Through_Pain --gain=9.30"
+measure-normalized-no-4 = "measure-loudness composizioni/Op-1_No-4_Through_Pain/normalized.flac"
+release-no-4 = "write-flac-metadata Op-1_No-4_Through_Pain \"No. 4: Through Pain\""
+
+# --------------------------------------------------------------------------------------------------
+
+reverb-no-5 = "reverb Op-1_No-5_To-the-Beloved --send-piano 0.2 --send-soprano 0.2 --send-contralto 0.2"
+measure-reverbed-no-5 = "measure-loudness composizioni/Op-1_No-5_To-the-Beloved/reverbed.flac"
+normalize-loudness-no-5 = "normalize-loudness Op-1_No-5_To-the-Beloved --gain=4.20"
+measure-normalized-no-5 = "measure-loudness composizioni/Op-1_No-5_To-the-Beloved/normalized.flac"
+release-no-5 = "write-flac-metadata Op-1_No-5_To-the-Beloved \"No. 5: To the Beloved\""
+
+# --------------------------------------------------------------------------------------------------
+
+reverb-no-6 = "reverb Op-1_No-6_Dreaming 0.7"
+measure-reverbed-no-6 = "measure-loudness composizioni/Op-1_No-6_Dreaming/reverbed.flac"
+normalize-loudness-no-6 = "normalize-loudness Op-1_No-6_Dreaming --gain=9.00"
+measure-normalized-no-6 = "measure-loudness composizioni/Op-1_No-6_Dreaming/normalized.flac"
+release-no-6 = "write-flac-metadata Op-1_No-6_Dreaming \"No. 6: Dreaming\""
+
+# --------------------------------------------------------------------------------------------------
+
+reverb-no-7 = "reverb Op-1_No-7_Solitude-and-Loneliness 0.2"
+measure-reverbed-no-7 = "measure-loudness composizioni/Op-1_No-7_Solitude-and-Loneliness/reverbed.flac"
+normalize-loudness-no-7 = "normalize-loudness Op-1_No-7_Solitude-and-Loneliness --gain=2.90"
+measure-normalized-no-7 = "measure-loudness composizioni/Op-1_No-7_Solitude-and-Loneliness/normalized.flac"
+release-no-7 = "write-flac-metadata Op-1_No-7_Solitude-and-Loneliness \"No. 7: Solitude and Loneliness\""
+
+# --------------------------------------------------------------------------------------------------
+
+[tasks.reverb-all]
+depends-on = [
+    "reverb-no-1",
+    "reverb-no-2",
+    "reverb-no-3",
+    "reverb-no-4",
+    "reverb-no-5",
+    "reverb-no-6",
+    "reverb-no-7",
+]
+
+# --------------------------------------------------------------------------------------------------
+
+[tasks.normalize-loudness-all]
+depends-on = [
+    "normalize-loudness-no-1",
+    "normalize-loudness-no-2",
+    "normalize-loudness-no-3",
+    "normalize-loudness-no-4",
+    "normalize-loudness-no-5",
+    "normalize-loudness-no-6",
+    "normalize-loudness-no-7",
+]
+
+# --------------------------------------------------------------------------------------------------
+
+[tasks.release-all]
+depends-on = [
+    "release-no-1",
+    "release-no-2",
+    "release-no-3",
+    "release-no-4",
+    "release-no-5",
+    "release-no-6",
+    "release-no-7",
+]
+
+# ==================================================================================================

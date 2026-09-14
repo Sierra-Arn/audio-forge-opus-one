@@ -1,0 +1,52 @@
+# Copyright (c) 2026 Ilya Snegov (aka Sierra Arn)
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+#     http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# recipes/duskverb/recipe.yaml
+
+package:
+    name: duskverb
+    version: 0.7.2
+
+# ==================================================================================================
+
+source:
+    url: https://github.com/dusk-audio/dusk-audio-plugins/releases/download/duskverb-v0.7.2/duskverb-linux.zip
+    sha256: 087ca67be557a184521902d976f8e579c5f31f42b4f6be8a768d50c12cd64c86
+
+# ==================================================================================================
+
+build:
+    number: 1
+    dynamic_linking:
+        # Prebuilt upstream binary — do not rewrite RPATH with patchelf.
+        binary_relocation: false
+    script: |
+        set -euxo pipefail
+        mkdir -p "${PREFIX}/lib/vst3"
+        cp -a VST3/DuskVerb.vst3 "${PREFIX}/lib/vst3/"
+        mkdir -p "${PREFIX}/lib/lv2"
+        cp -a LV2/DuskVerb.lv2 "${PREFIX}/lib/lv2/"
+
+# ==================================================================================================
+
+about:
+    homepage: https://github.com/dusk-audio/dusk-audio-plugins
+    repository: https://github.com/dusk-audio/dusk-audio-plugins
+    summary: Algorithmic reverb with eleven engines
+    license: GPL-3.0-only
+    description: | 
+        Packaged from upstream release duskverb-v0.7.2 
+        (commit eef842dcf3e1b60c12321d7ae07fc64ca4c37061).
+
+# ==================================================================================================
