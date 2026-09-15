@@ -154,4 +154,6 @@ With the environment activated and the MuseScore sources in place, publication-r
 
 Every file in this project is licensed under the [Apache License, Version 2.0](LICENSE-APACHE-2.0).
 
-The MuseScore sources (`.mscz`) are obtained from [score-forge-opus-one](https://github.com/Sierra-Arn/score-forge-opus-one) and are licensed under the [Creative Commons Attribution 4.0 International License](LICENSE-CC-BY-4.0). Under that upstream license, all files generated from the `.mscz` files and all files further derived from those outputs — including audio produced in this workspace — are also licensed under the [Creative Commons Attribution 4.0 International License](LICENSE-CC-BY-4.0).
+The MuseScore sources (`.mscz`) are obtained from [score-forge-opus-one](https://github.com/Sierra-Arn/score-forge-opus-one) and are licensed under the [Creative Commons Attribution 4.0 International License](LICENSE-CC-BY-4.0). 
+
+All files generated from the `.mscz` files and all files further derived from those outputs — including audio produced in this workspace — are also licensed under the [Creative Commons Attribution 4.0 International License](LICENSE-CC-BY-4.0).
